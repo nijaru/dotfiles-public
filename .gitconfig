@@ -1,36 +1,70 @@
 [user]
-	name = Roman Perepelitsa
-	email = roman.perepelitsa@gmail.com
-	signingKey = 8B060F8B9EB395614A669F2A90ACE942EB90C3DD
-[diff]
-	tool = meld
-[merge]
-	tool = meld
+	name = Nick Russo
+	email = nijaru0x@gmail.com
+	# signingkey = D6703FB644204E34
+[checkout]
+	defaultRemote = origin
+	workers = 0
+[commit]
+	gpgsign = true
+[core]
+	editor = $EDITOR --wait
+	excludesFile = ~/github/dotfiles/misc/gitignore
+	untrackedCache = true
 [difftool]
 	prompt = false
-[core]
-	pager = diff-so-fancy | less -RFXMx4
-	untrackedCache = true
-[color]
-	ui = true
-[color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
-[color "diff"]
-	meta = yellow
-	frag = magenta bold
-	commit = yellow bold
-	old = red bold
-	new = green bold
-	whitespace = red reverse
-[submodule]
-	recurse = true
-	fetchJobs = 0
+[fetch]
+	parallel = 0
+	prune = true
+	pruneTags = true
+# [gpg]
+# 	program = gpg
+[init]
+	defaultBranch = main
+[merge]
+	ff = only
+	tool = vscode
+[mergetool "$EDITOR"]
+	cmd = $EDITOR --wait $MERGED
+[pack]
+	threads = 0
+[pull]
+	# ff = only
+	prune = true
+	pruneTags = true
+	rebase = true
+[push]
+	default = upstream
+	followTags = true
 [rebase]
 	autoStash = true
+	# autoSquash = true
+[rerere]
+	autoupdate = true
+	enabled = true
+[status]
+	showUntrackedFiles = all
+[submodule]
+	# recurse = true
+	fetchJobs = 0
+[tag]
+	forceSignAnnotated = true
+[transfer]
+	fsckobjects = true
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+
+# [filter "lfs"]
+# 	clean = git-lfs clean -- %f
+# 	smudge = git-lfs smudge -- %f
+# 	process = git-lfs filter-process
+# 	required = true
+
+[color]
+	ui = true
+# [color "status"]
+# 	changed = yellow
+
 [alias]
-  patch = apply --ignore-space-change --ignore-whitespace
-[init]
-  defaultBranch = master
+	patch = apply --ignore-space-change --ignore-whitespace
+	scrub = reset --hard @{upstream}
